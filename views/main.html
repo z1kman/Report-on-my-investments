@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="Frame" id="Frame">
-            <div class="Form" id="Form">
+            <div class="Form FormActive" id="Form">
                 <div class="LabelForm">Мои инвестиции</div>
                 <table   width="100%" cellpadding="5" id="Table">
                     <col class="col1">
@@ -41,35 +41,7 @@
                     <div class="btnNewRec" onclick="OnClickAddNewRec()">Добавить запись</div>
                 </div>
             </div>
-        </Frame>
-        <div class="ParametrsDiv">
-            <div class="LabelForm" id="ParametrsLabel">Параметры позиции</div>
-            <dic class="InputPanel">
-                <label class="LabelInput">Имя позиции<input type="text" class="InputParametrs" id="NameInput"></label>
-                <label class="LabelInput">Идентификатор позиции <label class="NecessarilyLabel">*</label><input type="text" class="InputParametrs" id="IdInput"></label>
-                <label class="LabelInput">Количество <label class="NecessarilyLabel">*</label><input type="number" class="InputParametrs" id="CountInput"></label>
-                <label class="LabelInput">Базовая цена <br /> (цена покупки позиции) <label class="NecessarilyLabel">*</label><input type="number" class="InputParametrs" id="PurchasePriceInput"></label>
-                <label class="LabelInput">Брокер<input type="text" class="InputParametrs" id="BrokerInput"></label>
-                <label class="LabelInput">Комиссия брокера (%)<input type="number" class="InputParametrs" id="BrokersCommisionInput"></label>
-                <label class="LabelInput">Валюта <label class="NecessarilyLabel">*</label><select class="InputParametrs" id="CurrencyInput"> 
-                        <option>RUB</option>
-                        <option>USD</option>
-                        <option>EUR</option>
-                    </select>
-                </label>
-                <label class="LabelInput">Категория<input type="text" class="InputParametrs" id="CategoryInput"></label>
-                <label class="LabelInput">Класс актива <label class="NecessarilyLabel">*</label><select class="InputParametrs" id="ClassInput"> 
-                    <option>Акция</option>
-                    <option>Облигация</option>
-                    <option>Фонд(ПИФ)</option>
-                </select>
-            </label>
-            <div id="BtnActDiv" class="BtnActDiv">
-                <div class="btnAct" id="BtnEdit" onclick="OnClickAddNewRec('rec_1')">Сохранить</div>
-                <div class="btnAct" id="BtnRemove" onclick="OnClickAddNewRec('rec_1')">Удалить</div>
-            </div> 
-            </div>
-
         </div>
+
     </body>
 </html>

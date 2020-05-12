@@ -2,43 +2,35 @@ var Rec = 0;//кол-во записей на странице
 
 function OnClickRow(id){//нажатие на какую либо строку
     let Tr = document.getElementById(id);
-    
-    if(Tr.classList.contains('active')){//если на строку уже нажимали ранее
-        if(document.getElementById('BtnActDiv') != undefined){//если на форме уже есть кнопки с редактированием и удалением записей
-            document.getElementById('BtnActDiv').remove();//удалить кнопки
-        }
-        let rows = document.getElementsByTagName('tr');
-        for(let i = 0; i < rows.length; i++){//цикл по всем строкам
-            if(rows[i].classList.contains('active')){//если строка активна
-                rows[i].classList.remove('active')//удалить флаг
-            }
-        }
-        Tr.classList.remove('active');//удалить флаг
+    let Form = document.getElementById('Form');
+    let Frame = document.getElementById('Frame');
 
-    }else{//если ранее не нажимали
-        if(document.getElementById('BtnActDiv') != undefined){//если на форме уже есть кнопки с редактированием и удалением записей
-            let rows = document.getElementsByTagName('tr');
-            for(let i = 0; i < rows.length; i++){//цикл по всем строкам
-                if(rows[i].classList.contains('active')){//если строка активна
-                    rows[i].classList.remove('active')//удалить флаг
-                }
-            }
-            document.getElementById('BtnActDiv').remove();//удалить кнопки
-            
-        }else{
-            let DivButton = document.createElement('div');//создание нового элемента с кнопками
-            let Frame = document.getElementById('Frame');
-            DivButton.id = 'BtnActDiv';
-            DivButton.className = 'DivButton';
-            //добавление кнопок
-            DivButton.innerHTML = "<div class=\"btnAct\" id=\"BtnEdit\"  onclick=\"OnClickAddNewRec(\"" + id + "\")\">Редактировать запись</div>" +
-                                "<div class=\"btnAct\" id=\"BtnRemove\" onclick=\"OnClickAddNewRec(\"" + id + "\")\">Удалить запись</div>";
-
-            Tr.classList.add('active');
-            Frame.before(DivButton);
+    //Если включен режим редактирования позиции
+    if(!Form.classList.contains('FormActive')){
+        let ParametrsDivOld = document.getElementById('ParametrsDiv')
+        //Если панель параметров найдена
+        Form.classList.add('FormActive');//установка флага активной панели
+        if(ParametrsDivOld != undefined){
+            ParametrsDivOld.remove(); //удаление панели параметров
+            let ParametrsDiv = document.createElement('div');
+            ParametrsDiv.id = "ParametrsDiv";
+            ParametrsDiv.className = "ParametrsDiv";
+            //Генерирование панели параметров
+            GenerateParametrsDiv(Frame, ParametrsDiv, id)
+            //удаление флага активной панели
+            Form.classList.remove('FormActive');
         }
-        
+    }else{
+        let ParametrsDiv = document.createElement('div');
+        ParametrsDiv.id = "ParametrsDiv";
+        ParametrsDiv.className = "ParametrsDiv";
+        //Генерирование панели параметров
+        GenerateParametrsDiv(Frame, ParametrsDiv, id)
+        //удаление флага активной панели
+        Form.classList.remove('FormActive');
     }
+
+    
 }
 function OnClickAddNewRec(){//создание новой записи
     let Tr = document.createElement('tr');
@@ -67,4 +59,44 @@ function OnClickAddNewRec(){//создание новой записи
                     "<td class=\"Value\" id = \"Rec_" + Rec +"_11\"></td>";
 
     Table.append(Tr);
+}
+function OnClicCancelRec(){
+    let Form = document.getElementById('Form');
+    let ParametrsDivOld = document.getElementById('ParametrsDiv');
+
+    Form.classList.add('FormActive');//установка флага активной панели
+    ParametrsDivOld.remove();
+}
+function GenerateParametrsDiv(Frame, ParametrsDiv, id){//генерирование панели параметров
+    ParametrsDiv.innerHTML = "<div class=\"LabelForm\" id=\"ParametrsLabel\">" +
+    "\n     <div class = \"ImgCloseParamDiv\"><img src=\"../source/image/main/close.png\" width=\"16px\" title=\"закрыть панель\" onclick=\"OnClicCancelRec()\"></div>" +
+    "\n     Параметры позиции</div>" +
+    "\n  <dic class=\"InputPanel\">" +
+    "\n       <label class=\"LabelInput\">Имя позиции<input type=\"text\" class=\"InputParametrs\" id=\"NameInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Идентификатор позиции <label class=\"NecessarilyLabel\">*</label><input type=\"text\" class=\"InputParametrs\" id=\"IdInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Количество <label class=\"NecessarilyLabel\">*</label><input type=\"number\" class=\"InputParametrs\" id=\"CountInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Базовая цена <br /> (цена покупки позиции) <label class=\"NecessarilyLabel\">*</label><input type=\"number\" class=\"InputParametrs\" id=\"PurchasePriceInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Брокер<input type=\"text\" class=\"InputParametrs\" id=\"BrokerInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Комиссия брокера (%)<input type=\"number\" class=\"InputParametrs\" id=\"BrokersCommisionInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Валюта <label class=\"NecessarilyLabel\">*</label><select class=\"InputParametrs\" id=\"CurrencyInput\">" +
+    "\n               <option>RUB</option>" +
+    "\n               <option>USD</option>" +
+    "\n               <option>EUR</option>" +
+    "\n           </select>" +
+    "\n       </label>" +
+    "\n       <label class=\"LabelInput\">Категория<input type=\"text\" class=\"InputParametrs\" id=\"CategoryInput\"></label>" +
+    "\n       <label class=\"LabelInput\">Класс актива <label class=\"NecessarilyLabel\">*</label><select class=\"InputParametrs\" id=\"ClassInput\">" + 
+    "\n           <option>Акция</option>" +
+    "\n           <option>Облигация</option>" +
+    "\n           <option>Фонд(ПИФ)</option>" +
+    "\n       </select>" +
+    "\n   </label>" +
+    "\n   <div id=\"BtnActDiv\" class=\"BtnActDiv\">" +
+    "\n      <div class=\"btnAct\" id=\"BtnEdit\" onclick=\"OnClickAddNewRec('" + id + "')\">Сохранить</div>" +
+    "\n      <div class=\"btnAct\" id=\"BtnRemove\" onclick=\"OnClicCancelRec()\">Отменить</div>" +
+    "\n      <div class=\"btnAct\" id=\"BtnRemove\" onclick=\"OnClicRemoveRec('" + id + "')\">Удалить</div>" +
+    "\n   </div>" +
+    "\n   </div>";
+
+    Frame.append(ParametrsDiv);
 }
