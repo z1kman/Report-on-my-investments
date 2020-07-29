@@ -1,0 +1,24 @@
+table{
+    border: none;
+    width: 100%;
+    table-layout: fixed;
+}
+.col1{
+    width: 400px;
+}
+.col2{
+    width: 200px;
+}
+.col3{
+    width: 120px;
+}
+.col4{
+    width: 120px;
+}
+th{
+    background-color: #094d74;
+    border-radius: 5px;
+    font-family: 'Segoe Ui Light';
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,26 +1,3 @@
-@font-face{
-
-    font-family: 'Segoe Ui'; 
-    src: url('/source/fonts/9404.eot');
-    src: url('/source/fonts/9404.eot?iefix') format('eot');
-    font-weight: normal;
-    font-style: normal;
-
-    font-family: 'Segoe Ui Light';
-    src: url('/source/fonts/10389.eot');
-    src: url('/source/fonts/10389.eot?iefix') format('eot');
-
-    font-weight: normal;
-    font-style: normal;
-    }
-
-body{
-    background-color: rgb(219, 219, 219);
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe Ui Light';
-
-}
 .Frame{
     display: flex;
     justify-content: center;
@@ -39,6 +16,18 @@ body{
 .FormActive{
     width: 98%;
 }
+.LabelForm{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    position: sticky;
+    left: 0;
+    top: 0;
+    font-family: 'Segoe Ui';
+}
+
 table{
     border: none;
     width: 100%;
@@ -63,6 +52,16 @@ th{
     font-weight: normal;
     font-style: normal;
 }
+
+body{
+    background-color: rgb(219, 219, 219);
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe Ui Light';
+
+}
+
+
 td{
     margin-top: 5px;
     background-color: #cfdaec;
@@ -71,17 +70,7 @@ td{
     text-align: center;
 
 }
-.LabelForm{
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 22px;
-    position: sticky;
-    left: 0;
-    top: 0;
-    font-family: 'Segoe Ui';
-}
+
 #ParametrsLabel{
     position: initial;
 }
