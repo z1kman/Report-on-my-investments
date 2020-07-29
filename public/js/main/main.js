@@ -1,27 +1,26 @@
-var Rec = 0;//кол-во записей на странице
+let Rec = 0;//кол-во записей на странице
 
 function OnClickRow(id){//нажатие на какую либо строку
-    let Tr = document.getElementById(id);
-    let Form = document.getElementById('Form');
-    let Frame = document.getElementById('Frame');
+    const Form = document.getElementById('Form');
+    const Frame = document.getElementById('Frame');
 
     //Если включен режим редактирования позиции
     if(!Form.classList.contains('FormActive')){
-        let ParametrsDivOld = document.getElementById('ParametrsDiv')
+        const ParametrsDivOld = document.getElementById('ParametrsDiv')
         //Если панель параметров найдена
         Form.classList.add('FormActive');//установка флага активной панели
         if(ParametrsDivOld != undefined){
+            const ParametrsDiv = document.createElement('div');
             ParametrsDivOld.remove(); //удаление панели параметров
-            let ParametrsDiv = document.createElement('div');
             ParametrsDiv.id = "ParametrsDiv";
             ParametrsDiv.className = "ParametrsDiv";
             //Генерирование панели параметров
-            GenerateParametrsDiv(Frame, ParametrsDiv, id)
+            GenerateParametrsDiv(Frame, ParametrsDiv, id);
             //удаление флага активной панели
             Form.classList.remove('FormActive');
         }
     }else{
-        let ParametrsDiv = document.createElement('div');
+        const ParametrsDiv = document.createElement('div');
         ParametrsDiv.id = "ParametrsDiv";
         ParametrsDiv.className = "ParametrsDiv";
         //Генерирование панели параметров
@@ -33,8 +32,8 @@ function OnClickRow(id){//нажатие на какую либо строку
     
 }
 function OnClickAddNewRec(){//создание новой записи
-    let Tr = document.createElement('tr');
-    let Table = document.getElementById('Table');
+    const Tr = document.createElement('tr');
+    const Table = document.getElementById('Table');
     
     Rec++;
     Tr.id = "Rec_" + Rec;
@@ -61,8 +60,8 @@ function OnClickAddNewRec(){//создание новой записи
     Table.append(Tr);
 }
 function OnClicCancelRec(){
-    let Form = document.getElementById('Form');
-    let ParametrsDivOld = document.getElementById('ParametrsDiv');
+    const Form = document.getElementById('Form');
+    const ParametrsDivOld = document.getElementById('ParametrsDiv');
 
     Form.classList.add('FormActive');//установка флага активной панели
     ParametrsDivOld.remove();
