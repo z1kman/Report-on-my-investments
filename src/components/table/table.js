@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './table.css';
 
 export default class Table extends Component {
     constructor(props) {
@@ -7,16 +8,19 @@ export default class Table extends Component {
     render() {
         return (
             <> 
-                <table width="100%" cellpadding="5" id="Table">
-                    <col className="col1" />
-                    <col className="col2" />
-                    <col className="col3" />
-                    <col className="col4" />
-                    <col className="col5" />
-                    <col className="col6" />
-                    <col span="9" className="coln" />
+                <table width="100%" cellPadding="5" id="Table">
+                    <colgroup>
+                        <col className="col1" />
+                        <col className="col2" />
+                        <col className="col3" />
+                        <col className="col4" />
+                        <col className="col5" />
+                        <col className="col6" />
+                        <col span="9" className="coln" />
+                    </colgroup>
+                    <tbody>
                     <tr>
-                        <th className="Label" class="col1">Имя</th>
+                        <th className="Label" id="col1">Имя</th>
                         <th className="Label">Идентификатор</th>
                         <th className="Label">Цена</th>
                         <th className="Label">Количество</th>
@@ -35,6 +39,7 @@ export default class Table extends Component {
                         <th className="Label">Категория</th>
                         <th className="Label">Класс актива</th>
                     </tr>
+                    </tbody>
                 </table>
             </>
         );

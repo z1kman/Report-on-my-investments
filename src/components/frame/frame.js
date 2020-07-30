@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Table from '../table';
-import './frame';
+import './frame.css';
 
 
 export default class Frame extends Component {
